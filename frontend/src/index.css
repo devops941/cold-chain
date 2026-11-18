@@ -1,0 +1,288 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   Cold Chain design system — light theme, 2026 trends.
+   Palette is teal / emerald / amber / rose / violet / orange / lime.
+   No blue hue is used anywhere in the product.
+   ============================================================ */
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, sans-serif;
+
+  /* brand — teal */
+  --color-brand-50: #effdfa;
+  --color-brand-100: #d5f8f1;
+  --color-brand-200: #adf0e6;
+  --color-brand-300: #79e3d6;
+  --color-brand-400: #40cbc0;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+
+  /* accents */
+  --color-mint-50: #ecfdf5;
+  --color-mint-100: #d1fae5;
+  --color-mint-200: #a7f3d0;
+  --color-mint-500: #10b981;
+  --color-mint-600: #059669;
+  --color-mint-700: #047857;
+
+  --color-sun-50: #fffbeb;
+  --color-sun-100: #fef3c7;
+  --color-sun-200: #fde68a;
+  --color-sun-500: #f59e0b;
+  --color-sun-600: #d97706;
+  --color-sun-700: #b45309;
+
+  --color-rose-50: #fff1f2;
+  --color-rose-100: #ffe4e6;
+  --color-rose-200: #fecdd3;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+  --color-rose-700: #be123c;
+
+  --color-grape-50: #f5f3ff;
+  --color-grape-100: #ede9fe;
+  --color-grape-200: #ddd6fe;
+  --color-grape-500: #8b5cf6;
+  --color-grape-600: #7c3aed;
+  --color-grape-700: #6d28d9;
+
+  --color-tangerine-50: #fff7ed;
+  --color-tangerine-100: #ffedd5;
+  --color-tangerine-200: #fed7aa;
+  --color-tangerine-500: #fb923c;
+  --color-tangerine-600: #ea580c;
+  --color-tangerine-700: #c2410c;
+
+  --color-lime-50: #f7fee7;
+  --color-lime-100: #ecfccb;
+  --color-lime-200: #d9f99d;
+  --color-lime-500: #84cc16;
+  --color-lime-600: #65a30d;
+  --color-lime-700: #4d7c0f;
+
+  /* warm neutral surface scale */
+  --color-sand-50: #fafaf9;
+  --color-sand-100: #f5f5f4;
+  --color-sand-200: #e7e5e4;
+  --color-sand-300: #d6d3d1;
+  --color-sand-400: #a8a29e;
+  --color-sand-500: #78716c;
+  --color-sand-600: #57534e;
+  --color-sand-700: #44403c;
+  --color-sand-800: #292524;
+  --color-sand-900: #1c1917;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+
+  --shadow-soft: 0 1px 2px rgba(28, 25, 23, 0.04), 0 8px 24px -12px rgba(28, 25, 23, 0.12);
+  --shadow-lift: 0 2px 6px rgba(28, 25, 23, 0.05), 0 18px 40px -18px rgba(28, 25, 23, 0.18);
+  --shadow-glow: 0 12px 40px -16px rgba(13, 148, 136, 0.5);
+
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(244, 63, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0);
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-sand-800);
+    background-color: #f7f6f3;
+    background-image:
+      radial-gradient(60rem 40rem at 8% -10%, rgba(20, 184, 166, 0.12), transparent 60%),
+      radial-gradient(50rem 34rem at 100% 0%, rgba(139, 92, 246, 0.1), transparent 55%),
+      radial-gradient(46rem 34rem at 50% 120%, rgba(245, 158, 11, 0.1), transparent 60%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: var(--color-brand-200);
+    color: var(--color-brand-900);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-sand-300) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--color-sand-300);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--color-sand-400);
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid var(--color-sand-200);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-hover {
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .input {
+    width: 100%;
+    border-radius: 0.9rem;
+    border: 1px solid var(--color-sand-300);
+    background: #fff;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.9rem;
+    color: var(--color-sand-800);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .input::placeholder {
+    color: var(--color-sand-400);
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: var(--color-brand-400);
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.15);
+  }
+
+  .label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-sand-600);
+    margin-bottom: 0.3rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: 0.9rem;
+    padding: 0.6rem 1.05rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.15s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-700));
+    color: #fff;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 16px 44px -14px rgba(13, 148, 136, 0.65);
+  }
+
+  .btn-ghost {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: var(--color-sand-200);
+    color: var(--color-sand-700);
+  }
+
+  .btn-ghost:hover {
+    background: #fff;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-danger {
+    background: linear-gradient(135deg, var(--color-rose-500), var(--color-rose-600));
+    color: #fff;
+  }
+}
